@@ -10,7 +10,7 @@ type plug_xx struct {
 	name string
 }
 
-func (p *plug_xx) Run() (rest Result, e error) {
+func (p *plug_xx) Run(arg ...interface{}) (rest Result, e error) {
 	log.Println("plugxx run ...")
 	rest.Message = "x"
 	return rest, e
@@ -21,7 +21,7 @@ type plug_oo struct {
 	name string
 }
 
-func (p *plug_oo) Run() (rest Result, e error) {
+func (p *plug_oo) Run(arg ...interface{}) (rest Result, e error) {
 	log.Println("plugoo run ...")
 	rest.Message = "x"
 	return rest, e
