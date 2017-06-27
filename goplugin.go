@@ -8,7 +8,7 @@ import (
 
 // 插件
 type Plugin interface {
-	Run(arg ...interface{}) (Result, error)
+	Run(name string, arg ...interface{}) (Result, error)
 }
 
 // 插件集合
@@ -51,10 +51,10 @@ func (p *Plugins) unRegisterAllDrivers() {
 }
 
 // open
-func (p *Plugins) Open(name string, arg ...interface{}) (rest Result, e error) {
+func (p *Plugins) Open(name string, args ...interface{}) (rest Result, e error) {
 	if _, dup := p.plugs[name]; dup {
 		plug := p.plugs[name]
-		return plug.Run(arg)
+		return plug.Run(name, args)
 	} else {
 		log.Print("no plugin found!")
 		return rest, e
